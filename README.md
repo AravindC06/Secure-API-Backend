@@ -1,6 +1,12 @@
-# Secure Node.js Backend with JWT Authentication
+# Secure Node.js Backend with JWT Authentication for Custom Stitching E-Commerce Platform
 
-This project is a robust and secure backend application built with **Node.js**, implementing **JWT-based authentication** and advanced security practices. It is designed with scalability and performance in mind, leveraging modern middleware for logging, rate limiting, and protection against common vulnerabilities like XSS and NoSQL injection.
+This project is a secure backend application built with **Node.js** to support an **e-commerce platform for online custom stitching**. The application features **JWT-based authentication** and advanced security practices. It includes user authentication, secure session management, and robust protection against common vulnerabilities like XSS and NoSQL injection.
+
+---
+
+## 🛍️ Project Overview
+
+This platform enables users to explore custom stitching services online, allowing them to place orders, manage profiles, and securely interact with the system. The backend focuses on delivering high performance, security, and scalability to ensure a seamless user experience.
 
 ---
 
@@ -30,6 +36,72 @@ This project is a robust and secure backend application built with **Node.js**, 
 - **Logging**: Morgan with custom formats
 - **Performance**: Compression, Rate Limiting
 - **Environment Configurations**: dotenv
+
+---
+
+## Security Features
+
+### Cross-Site Scripting (XSS)
+- **Handled by**: `xss-clean`, `helmet`, input validation (`express-validator`).
+- **Protection**: Sanitizes user inputs to prevent malicious scripts from being executed in the client’s browser.
+
+### NoSQL Injection and MongoDB Query Injection
+- **Handled by**: `express-mongo-sanitize`.
+- **Protection**: Removes `$` and `.` operators from inputs to prevent malicious queries.
+
+### Cross-Origin Resource Sharing (CORS) Misconfiguration
+- **Handled by**: `cors` with `corsOptions`.
+- **Protection**: Restricts allowed origins, methods, and headers to prevent unauthorized cross-origin requests.
+
+### Content Security Policy (CSP)
+- **Handled by**: `helmet`.
+- **Protection**: Prevents unauthorized scripts, images, or other resources from being loaded into the application.
+
+### Clickjacking
+- **Handled by**: `helmet`.
+- **Protection**: Adds `X-Frame-Options` headers to prevent the application from being embedded in iframes.
+
+### Data Breach via Cookie Hijacking
+- **Handled by**: `cookie-parser`, secure cookie configurations (`httpOnly`, `secure`, `sameSite`).
+- **Protection**: Protects cookies from being accessed or manipulated by client-side scripts or in unsafe environments.
+
+### Brute Force Attacks on Authentication
+- **Handled by**: Rate limiting (`loginLimiter`, `registerLimiter`).
+- **Protection**: Limits login/register attempts from a single IP within a time window.
+
+### Denial of Service (DoS)
+- **Handled by**: `compression`, rate limiting.
+- **Protection**: Reduces response payload size and limits request rates to mitigate resource exhaustion.
+
+### Unsecured HTTP Headers
+- **Handled by**: `helmet`.
+- **Protection**: Adds secure headers like `Strict-Transport-Security`, `X-Content-Type-Options`, etc., to protect against header-based vulnerabilities.
+
+### Broken Authentication
+- **Handled by**: JWT-based authentication and refresh token mechanisms with secure algorithms (e.g., `RS256`).
+- **Protection**: Ensures token validity using private/public key pairs to avoid tampering.
+
+### Man-in-the-Middle Attacks (MITM)
+- **Handled by**: Secure HTTPS configuration.
+- **Protection**: Ensures sensitive data is transmitted securely over HTTPS.
+
+### Input Validation and Sanitization
+- **Handled by**: `express-validator`.
+- **Protection**: Ensures user inputs conform to expected formats, reducing risks of malformed or malicious inputs.
+
+### Excessive Data Exposure
+- **Handled by**: Explicit field selection in database queries (e.g., `user.findById(...).select(...)`).
+- **Protection**: Limits unnecessary exposure of sensitive data in API responses.
+
+### Replay Attacks
+- **Handled by**: Token expiration and rotation mechanisms (access and refresh tokens).
+- **Protection**: Prevents old or duplicate tokens from being reused.
+
+## Needs to be completed
+
+### Cross-Site Request Forgery (CSRF)()
+- **Handled by**: (Commented-out) `csurf`.
+- **Protection**: When enabled, ensures requests originate from trusted sources with valid CSRF tokens.
 
 ---
 
