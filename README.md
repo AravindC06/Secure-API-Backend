@@ -99,8 +99,7 @@ This platform enables users to explore custom stitching services online, allowin
 
 ## Needs to be completed
 
-### Cross-Site Request Forgery (CSRF)()
-- **Handled by**: (Commented-out) `csurf`.
+### Cross-Site Request Forgery (CSRF)
 - **Protection**: When enabled, ensures requests originate from trusted sources with valid CSRF tokens.
 
 ---
