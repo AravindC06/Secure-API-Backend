@@ -35,6 +35,42 @@ This project is a robust and secure backend application built with **Node.js**, 
 
 ## 📄 Code Overview
 
+## 📄 Current Progress
+
+### Completed:
+- **User Authentication**:
+  - Secure user registration and login with hashed passwords (bcrypt).
+  - Token-based authentication using access and refresh tokens.
+- **Session Management**:
+  - Cookies for secure session handling.
+  - Refresh token mechanism for seamless session continuation.
+- **Security**:
+  - Implemented Helmet for HTTP header protection.
+  - Configured CORS policies for cross-origin resource sharing.
+  - Sanitized inputs using `xss-clean` and `express-mongo-sanitize`.
+  - Rate limiting to prevent brute-force attacks.
+- **Performance Enhancements**:
+  - Added response compression for optimized data transfer.
+- **Validation**:
+  - Validated inputs using `express-validator` to prevent malformed or malicious data.
+- **Modular Codebase**:
+  - Implemented a scalable and reusable folder structure.
+
+### Pending:
+- **Order Management System**:
+  - Create APIs for placing and managing custom stitching orders.
+  - Add CRUD operations for orders in the database.
+- **Product Catalog**:
+  - Develop APIs for listing available stitching services with details.
+- **User Profile Management**:
+  - Add APIs to manage user profiles and preferences.
+- **Admin Panel**:
+  - Implement admin-specific features for order and user management.
+- **Testing**:
+  - Perform integration and unit testing for existing and upcoming features.
+
+---
+
 ### Core Dependencies and Middleware
 
 - **Express.js**: Lightweight and powerful web framework for Node.js.
@@ -80,14 +116,5 @@ This project is a robust and secure backend application built with **Node.js**, 
 
 ## 🚀 Future Improvements
 
-1. **OAuth Integration**: Add support for third-party authentication providers (e.g., Google, GitHub).
-2. **Enhanced Logging**: Implement structured logging with tools like Winston.
-3. **Monitoring**: Integrate monitoring solutions like New Relic or DataDog.
-4. **GraphQL API**: Extend the REST API with GraphQL for efficient data querying.
-
----
-
-## 📜 License
-
-This project is licensed under the [MIT License](LICENSE).
-
+- **Third-Party Integrations**: Add OAuth login options (e.g., Google, Facebook).
+- **Enhanced Admin Features**: Real-time order tracking and analytics.
